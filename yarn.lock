@@ -1230,6 +1230,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@expo-google-fonts/playfair-display-sc@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "@expo-google-fonts/playfair-display-sc@npm:0.4.1"
+  checksum: 10c0/a8d4edfb220c77d4ed829699617e67a0a1332dc04899ec61c72ec3602b7c35b3df4a2f1dccb6657b5a8c040fe3cf5243fef30c5b7d838769233aabeefc819209
+  languageName: node
+  linkType: hard
+
+"@expo-google-fonts/playfair-display@npm:^0.4.2":
+  version: 0.4.2
+  resolution: "@expo-google-fonts/playfair-display@npm:0.4.2"
+  checksum: 10c0/fe9e7c4335f2c13ac2dd4c915996b8378a7acdaeac4a30fe45408abcd9cb5b8fa4331bb384276a2b3e28273b069b5034faf51801b851aa9c182a7c1b6b2ffc1c
+  languageName: node
+  linkType: hard
+
 "@expo/cli@npm:54.0.11":
   version: 54.0.11
   resolution: "@expo/cli@npm:54.0.11"
@@ -2776,7 +2790,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:~19.1.0":
+"@types/react@npm:~19.1.10":
   version: 19.1.17
   resolution: "@types/react@npm:19.1.17"
   dependencies:
@@ -3727,11 +3741,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "brewtime-coffe@workspace:."
   dependencies:
+    "@expo-google-fonts/playfair-display": "npm:^0.4.2"
+    "@expo-google-fonts/playfair-display-sc": "npm:^0.4.1"
     "@expo/vector-icons": "npm:^15.0.2"
     "@react-navigation/bottom-tabs": "npm:^7.4.0"
     "@react-navigation/elements": "npm:^2.6.3"
     "@react-navigation/native": "npm:^7.1.8"
-    "@types/react": "npm:~19.1.0"
+    "@types/react": "npm:~19.1.10"
     eslint: "npm:^9.25.0"
     eslint-config-expo: "npm:~10.0.0"
     expo: "npm:~54.0.13"
