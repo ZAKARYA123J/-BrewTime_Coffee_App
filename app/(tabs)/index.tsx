@@ -8,13 +8,17 @@ import {
   PlayfairDisplay_800ExtraBold,
   PlayfairDisplay_900Black
 } from '@expo-google-fonts/playfair-display';
-import { useFonts } from '@expo-google-fonts/playfair-display-sc';
+import {
+  PlayfairDisplaySC_400Regular,
+  useFonts
+} from "@expo-google-fonts/playfair-display-sc";
+
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View, } from 'react-native';
 export default function HomeScreen() {
-  let [fontsLoaded] = useFonts({
+  let [fontsLoaded, fontError] = useFonts({
     PlayfairDisplay_400Regular,
     PlayfairDisplay_500Medium,
     PlayfairDisplay_600SemiBold,
@@ -23,6 +27,7 @@ export default function HomeScreen() {
     PlayfairDisplay_900Black,
     PlayfairDisplay_400Regular_Italic,
     PlayfairDisplay_700Bold_Italic,
+    PlayfairDisplaySC_400Regular
   });
 
   if (!fontsLoaded) {
@@ -33,7 +38,11 @@ export default function HomeScreen() {
 const blurhash =
   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
   return (
-    <React.Fragment>
+   <ScrollView 
+      style={styles.scrollView}
+      contentContainerStyle={styles.scrollContent}
+      showsVerticalScrollIndicator={true}
+    >
     <View style={styles.container}>
         <Image
         style={styles.image}
@@ -44,26 +53,58 @@ const blurhash =
         transition={1000}
       />
       <View style={styles.container2}>
-        <Text style={styles.text}>Welcome to  </Text>
+        <Text style={styles.text}>Welcome to</Text>
         <Text style={styles.text2}>CaféLine </Text>
       </View>
-   
+   <View style={styles.container3}>
+     <Pressable style={styles.pressable}>
+          <Text style={styles.text3}>Get Started</Text>
+        </Pressable>
+        <Pressable style={styles.pressable}>
+           <Text style={styles.text3}>Menu</Text>
+        </Pressable>
+   </View>
     </View>
-    </React.Fragment>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+    scrollView: {
+    flex: 1,
+        backgroundColor:'#rgba(229, 193, 149, 0.26)',
+
+  },
+   scrollContent: {
+    flexGrow: 1,
+    paddingBottom: 40, // Add bottom padding for better scroll experience
+  },
   container: {
-    backgroundColor:'#rgba(229, 193, 149, 0.26)',
     flex: 1,
     alignItems: 'center',
     paddingTop:100
   },
+  pressable:{
+     backgroundColor:'#F3EBD7',
+     width:277,
+       justifyContent: 'center' , 
+        alignItems: 'center',
+  
+     height:73,
+     opacity:1,
+     margin:20,
+     borderRadius:20
+  },
   container2: {
     marginTop:20,
+   
     alignItems: 'center',
       justifyContent: 'center' , // This centers vertically
+  },
+  container3:{
+ alignItems: 'center',
+   opacity:1,
+   marginTop:50,
   },
   image: {
     width: 288,
@@ -80,5 +121,10 @@ const styles = StyleSheet.create({
   text2:{
     fontSize:64,
          fontFamily: 'PlayfairDisplay_700Bold_Italic',
+  },
+  text3:{
+    fontSize:32,
+             fontFamily: 'PlayfairDisplay_600SemiBold',
+             opacity:1
   }
 });
