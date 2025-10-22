@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+import { StyleSheet, View } from 'react-native';
+const blurhash =
+  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+export default function TabTwoScreen() {
+  return (
+  <>
+  <View>
+      {/* <Image
+            style={styles.image}
+            
+            source={require("@/assets/images/Image.webp")}
+            placeholder={{ blurhash }}
+            contentFit="cover"
+            transition={1000}
+          /> */}
+  </View>
+  </>
+=======
 import { PlayfairDisplay_700Bold, useFonts } from '@expo-google-fonts/playfair-display';
 import { Image } from 'expo-image';
 import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -99,6 +118,7 @@ export default function ExploreScreen() {
         ))}
       </View>
     </ScrollView>
+>>>>>>> 7b2061422d769bdab007c79f5efa91d9ec94a89f
   );
 }
 
@@ -154,7 +174,17 @@ const styles = StyleSheet.create({
     color: '#A24444',
     paddingHorizontal: 20,
   },
+<<<<<<< HEAD
+    image: {
+    width: 288,
+    height: 288,
+    borderRadius:80,
+    opacity:1
+  },
+  titleContainer: {
+=======
   cardsContainer: {
+>>>>>>> 7b2061422d769bdab007c79f5efa91d9ec94a89f
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',

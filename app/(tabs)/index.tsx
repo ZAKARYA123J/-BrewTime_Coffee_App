@@ -1,18 +1,73 @@
+import {
+  PlayfairDisplay_400Regular,
+  PlayfairDisplay_400Regular_Italic,
+  PlayfairDisplay_500Medium,
+  PlayfairDisplay_600SemiBold,
+  PlayfairDisplay_700Bold,
+  PlayfairDisplay_700Bold_Italic,
+  PlayfairDisplay_800ExtraBold,
+  PlayfairDisplay_900Black
+} from '@expo-google-fonts/playfair-display';
+import {
+  PlayfairDisplaySC_400Regular,
+  useFonts
+} from "@expo-google-fonts/playfair-display-sc";
+
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
-
+import { useRouter } from 'expo-router';
+import React from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View, } from 'react-native';
 export default function HomeScreen() {
+  let [fontsLoaded, fontError] = useFonts({
+    PlayfairDisplay_400Regular,
+    PlayfairDisplay_500Medium,
+    PlayfairDisplay_600SemiBold,
+    PlayfairDisplay_700Bold,
+    PlayfairDisplay_800ExtraBold,
+    PlayfairDisplay_900Black,
+    PlayfairDisplay_400Regular_Italic,
+    PlayfairDisplay_700Bold_Italic,
+    PlayfairDisplaySC_400Regular
+  });
+
+  if (!fontsLoaded) {
+    return null; // or a loading component
+  }
+
+  const router = useRouter();
+const blurhash =
+  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+   <ScrollView 
+      style={styles.scrollView}
+      contentContainerStyle={styles.scrollContent}
+      showsVerticalScrollIndicator={true}
+    >
+    <View style={styles.container}>
         <Image
+<<<<<<< HEAD
+        style={styles.image}
+        
+        source={require("@/assets/images/Image.webp")}
+        placeholder={{ blurhash }}
+        contentFit="cover"
+        transition={1000}
+      />
+      <View style={styles.container2}>
+        <Text style={styles.text}>Welcome to</Text>
+        <Text style={styles.text2}>CaféLine </Text>
+      </View>
+   <View style={styles.container3}>
+     <Pressable style={styles.pressable}>
+          <Text style={styles.text3}>Get Started</Text>
+        </Pressable>
+        <Pressable style={styles.pressable}>
+           <Text style={styles.text3}>Menu</Text>
+        </Pressable>
+   </View>
+    </View>
+    </ScrollView>
+=======
           source={require('@/assets/images/partial-react-logo.png')}
           style={styles.reactLogo}
         />
@@ -75,24 +130,66 @@ export default function HomeScreen() {
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
+>>>>>>> 7b2061422d769bdab007c79f5efa91d9ec94a89f
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+    scrollView: {
+    flex: 1,
+        backgroundColor:'#rgba(229, 193, 149, 0.26)',
+
+  },
+   scrollContent: {
+    flexGrow: 1,
+    paddingBottom: 40, // Add bottom padding for better scroll experience
+  },
+  container: {
+    flex: 1,
     alignItems: 'center',
-    gap: 8,
+    paddingTop:100
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  pressable:{
+     backgroundColor:'#F3EBD7',
+     width:277,
+       justifyContent: 'center' , 
+        alignItems: 'center',
+  
+     height:73,
+     opacity:1,
+     margin:20,
+     borderRadius:20
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  container2: {
+    marginTop:20,
+   
+    alignItems: 'center',
+      justifyContent: 'center' , // This centers vertically
   },
+  container3:{
+ alignItems: 'center',
+   opacity:1,
+   marginTop:50,
+  },
+  image: {
+    width: 288,
+    height: 288,
+    borderRadius:80,
+    opacity:1
+  },
+  text:{
+    fontSize:36,
+     fontFamily: 'PlayfairDisplaySC_400Regular',
+    alignContent:'center',
+    color:'#A24444'
+  },
+  text2:{
+    fontSize:64,
+         fontFamily: 'PlayfairDisplay_700Bold_Italic',
+  },
+  text3:{
+    fontSize:32,
+             fontFamily: 'PlayfairDisplay_600SemiBold',
+             opacity:1
+  }
 });
