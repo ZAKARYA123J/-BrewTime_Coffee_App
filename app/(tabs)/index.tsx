@@ -37,9 +37,9 @@ export default function HomeScreen() {
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
+        <Link href="/explore" asChild >
           <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+            <ThemedText type="subtitle">Menu</ThemedText>
           </Link.Trigger>
           <Link.Preview />
           <Link.Menu>
