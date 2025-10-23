@@ -45,7 +45,6 @@ const blurhash =
     >
     <View style={styles.container}>
         <Image
-<<<<<<< HEAD
         style={styles.image}
         
         source={require("@/assets/images/Image.webp")}
@@ -58,79 +57,16 @@ const blurhash =
         <Text style={styles.text2}>CaféLine </Text>
       </View>
    <View style={styles.container3}>
-     <Pressable style={styles.pressable}>
+     <Pressable onPress={()=> router.push("/login")} style={styles.pressable}>
           <Text style={styles.text3}>Get Started</Text>
-        </Pressable>
-        <Pressable style={styles.pressable}>
+      </Pressable>
+        <Pressable onPress={()=> router.push("/explore")} style={styles.pressable}>
            <Text style={styles.text3}>Menu</Text>
         </Pressable>
    </View>
     </View>
     </ScrollView>
-=======
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/explore" asChild >
-          <Link.Trigger>
-            <ThemedText type="subtitle">Menu</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
->>>>>>> 7b2061422d769bdab007c79f5efa91d9ec94a89f
   );
 }
 

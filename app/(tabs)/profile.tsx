@@ -1,17 +1,17 @@
 import {
-    PlayfairDisplay_400Regular,
-    PlayfairDisplay_400Regular_Italic,
-    PlayfairDisplay_500Medium,
-    PlayfairDisplay_600SemiBold,
-    PlayfairDisplay_700Bold,
-    PlayfairDisplay_700Bold_Italic,
-    PlayfairDisplay_800ExtraBold,
-    PlayfairDisplay_900Black
+  PlayfairDisplay_400Regular,
+  PlayfairDisplay_400Regular_Italic,
+  PlayfairDisplay_500Medium,
+  PlayfairDisplay_600SemiBold,
+  PlayfairDisplay_700Bold,
+  PlayfairDisplay_700Bold_Italic,
+  PlayfairDisplay_800ExtraBold,
+  PlayfairDisplay_900Black
 } from '@expo-google-fonts/playfair-display';
 import {
-    PlayfairDisplaySC_400Regular,
-    useFonts
-} from "@expo-google-fonts/playfair-display-sc";
+  PlayfairDisplaySC_400Regular,
+  useFonts
+} from '@expo-google-fonts/playfair-display-sc';
 
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     marginTop:20,
    
     alignItems: 'center',
-      justifyContent: 'center' , // This centers vertically
+      justifyContent: 'center' , 
   },
   container3:{
  alignItems: 'center',
