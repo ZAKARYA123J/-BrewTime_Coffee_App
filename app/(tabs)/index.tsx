@@ -31,7 +31,7 @@ export default function HomeScreen() {
   });
 
   if (!fontsLoaded) {
-    return null; // or a loading component
+    return null; 
   }
 
   const router = useRouter();
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
    scrollContent: {
     flexGrow: 1,
-    paddingBottom: 40, // Add bottom padding for better scroll experience
+    paddingBottom: 40, 
   },
   container: {
     flex: 1,
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     marginTop:20,
    
     alignItems: 'center',
-      justifyContent: 'center' , // This centers vertically
+      justifyContent: 'center' , 
   },
   container3:{
  alignItems: 'center',
