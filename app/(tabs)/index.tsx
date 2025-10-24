@@ -31,7 +31,7 @@ export default function HomeScreen() {
   });
 
   if (!fontsLoaded) {
-    return null; // or a loading component
+    return null; 
   }
 
   const router = useRouter();
@@ -57,10 +57,10 @@ const blurhash =
         <Text style={styles.text2}>CaféLine </Text>
       </View>
    <View style={styles.container3}>
-     <Pressable style={styles.pressable}>
+     <Pressable onPress={()=> router.push("/login")} style={styles.pressable}>
           <Text style={styles.text3}>Get Started</Text>
-        </Pressable>
-        <Pressable style={styles.pressable}>
+      </Pressable>
+        <Pressable onPress={()=> router.push("/explore")} style={styles.pressable}>
            <Text style={styles.text3}>Menu</Text>
         </Pressable>
    </View>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
    scrollContent: {
     flexGrow: 1,
-    paddingBottom: 40, // Add bottom padding for better scroll experience
+    paddingBottom: 40, 
   },
   container: {
     flex: 1,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     marginTop:20,
    
     alignItems: 'center',
-      justifyContent: 'center' , // This centers vertically
+      justifyContent: 'center' , 
   },
   container3:{
  alignItems: 'center',

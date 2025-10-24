@@ -3,6 +3,8 @@ import {
   useFonts,
 } from "@expo-google-fonts/playfair-display";
 import { Ionicons } from "@expo/vector-icons";
+import Feather from '@expo/vector-icons/Feather';
+import Fontisto from '@expo/vector-icons/Fontisto';
 import { Image } from "expo-image";
 import { router } from "expo-router";
 import { useState } from "react";
@@ -19,7 +21,7 @@ import {
   View,
 } from "react-native";
 
-export default function LoginScreen() {
+export default function SignupScreen() {
   const [fontsLoaded] = useFonts({
     PlayfairDisplay_700Bold,
   });
@@ -41,8 +43,6 @@ export default function LoginScreen() {
   };
 
   const handleSignUp = () => {
-                  
-
     Alert.alert("Inscription", "Créer un nouveau compte");
   };
 
@@ -53,7 +53,7 @@ export default function LoginScreen() {
       </Pressable>
       <Image
         style={styles.backgroundImage}
-        source={require("@/assets/images/my.images/arriere.jpg")}
+        source={require("@/assets/images/my.images/Cafe_image_de_Nathan.webp")}
         contentFit="cover"
       />
       <View style={styles.overlay} />
@@ -68,22 +68,31 @@ export default function LoginScreen() {
               source={require("@/assets/images/my.images/logo.png")}
               contentFit="cover"
             />
-            <Text style={styles.appName}>LOGIN</Text>
+            <Text style={styles.appName}>SIGN UP</Text>
             <Text style={styles.tagline}>Votre café, votre moment</Text>
           </View>
           <View style={styles.formContainer}>
-            <Text style={styles.welcomeText}>Bienvenue</Text>
-            <Text style={styles.subtitle}>Connectez-vous pour continuer</Text>
+            <Text style={styles.welcomeText}>Commencez gratuitement</Text>
+            <Text style={styles.subtitle}>Entrez vos coordonnées ci-dessous</Text>
+           
             <View style={styles.inputContainer}>
-              <Ionicons
-                name="mail-outline"
-                size={20}
-                color="#F2E9D5"
-                style={styles.inputIcon}
-              />
+             <Fontisto name="email" size={20} color="white" style={styles.inputIcon}/>
               <TextInput
                 style={styles.input}
-                placeholder="Email"
+                placeholder="EMAIL"
+                placeholderTextColor="#D4A574"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+            </View>
+             <View style={styles.inputContainer}>
+             <Feather name="user" size={20} color="white"                 style={styles.inputIcon}
+ />
+              <TextInput
+                style={styles.input}
+                placeholder="USERNAME"
                 placeholderTextColor="#D4A574"
                 value={email}
                 onChangeText={setEmail}
@@ -95,12 +104,12 @@ export default function LoginScreen() {
               <Ionicons
                 name="lock-closed-outline"
                 size={20}
-                color="#F2E9D5"
+                color="white"
                 style={styles.inputIcon}
               />
               <TextInput
                 style={styles.input}
-                placeholder="Mot de passe"
+                placeholder="MOT DE PASSE"
                 placeholderTextColor="#D4A574"
                 value={password}
                 onChangeText={setPassword}
@@ -118,35 +127,29 @@ export default function LoginScreen() {
                 />
               </TouchableOpacity>
             </View>
+          
 
-            <TouchableOpacity style={styles.forgotPassword}>
-              <Text style={styles.forgotPasswordText}>
-                Mot de passe oublié ?
-              </Text>
-            </TouchableOpacity>
-
+          
             <TouchableOpacity
               style={styles.loginButton}
               onPress={() => router.push("/explore")}
             >
-              <Text style={styles.loginButtonText}>Se connecter</Text>
+              
+              <Text style={styles.loginButtonText}>Sign Up</Text>
+            </TouchableOpacity> 
+             <View style={styles.signupContainer}>
+                    <View style={styles.divider}>
+              
+              <Text style={styles.dividerText}>Already have account?</Text>
+       <TouchableOpacity
+       
+              onPress={() => router.push("/login")}
+            >
+              <Text style={styles.login}>Login</Text>
             </TouchableOpacity>
-            <View style={styles.divider}>
-              <View style={styles.dividerLine} />
-              <Text style={styles.dividerText}>OU</Text>
-              <View style={styles.dividerLine} />
-            </View>
-            <View style={styles.signupContainer}>
-              <Text style={styles.signupText}>
-                Vous n&apos;avez pas de compte ?{" "}
-              </Text>
-                    
-                           <TouchableOpacity onPress={()=> router.push("/signup")}>
-                <Text style={styles.signupLink}>S&apos;inscrire</Text>
-              </TouchableOpacity>     
-            
-      
-            </View>
+            </View>  
+                </View>
+          
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -157,6 +160,11 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  login:{
+     color:"#F2E9D5",
+     textDecorationLine:"underline"
+
   },
   backgroundImage: {
     position: "absolute",
@@ -201,7 +209,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   welcomeText: {
-    fontSize: 32,
+    fontSize: 29,
     fontFamily: "PlayfairDisplay_700Bold",
     color: "#F2E9D5",
     marginBottom: 5,
@@ -252,7 +260,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 120,
     height: 120,
-    borderRadius: 60,
+    borderRadius: 20,
     marginBottom: 15,
   },
   loginButtonText: {
@@ -261,7 +269,7 @@ const styles = StyleSheet.create({
     fontFamily: "PlayfairDisplay_700Bold",
   },
   divider: {
-    flexDirection: "row",
+    
     alignItems: "center",
     marginVertical: 20,
   },
@@ -271,9 +279,8 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(242, 233, 213, 0.3)",
   },
   dividerText: {
-    marginHorizontal: 15,
-    color: "#D4A574",
-    fontSize: 14,
+     color: "#d4a26dff",
+    fontSize: 16,
   },
   socialContainer: {
     flexDirection: "row",
@@ -298,6 +305,7 @@ const styles = StyleSheet.create({
     color: "#D4A574",
     fontSize: 14,
   },
+  
   signupLink: {
     color: "#F2E9D5",
     fontSize: 14,
