@@ -66,7 +66,6 @@ const blurhash =
    </View>
     </View>
     </ScrollView>
-
   );
 }
 
