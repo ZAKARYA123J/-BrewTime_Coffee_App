@@ -69,11 +69,11 @@ export default function LoginScreen() {
               contentFit="cover"
             />
             <Text style={styles.appName}>LOGIN</Text>
-            <Text style={styles.tagline}>Votre café, votre moment</Text>
+            <Text style={styles.tagline}>Your coffee, your moment</Text>
           </View>
           <View style={styles.formContainer}>
-            <Text style={styles.welcomeText}>Bienvenue</Text>
-            <Text style={styles.subtitle}>Connectez-vous pour continuer</Text>
+            <Text style={styles.welcomeText}>Welcome</Text>
+            <Text style={styles.subtitle}>Log in to continue</Text>
             <View style={styles.inputContainer}>
               <Ionicons
                 name="mail-outline"
@@ -100,7 +100,7 @@ export default function LoginScreen() {
               />
               <TextInput
                 style={styles.input}
-                placeholder="Mot de passe"
+                placeholder="Password"
                 placeholderTextColor="#D4A574"
                 value={password}
                 onChangeText={setPassword}
@@ -121,7 +121,7 @@ export default function LoginScreen() {
 
             <TouchableOpacity style={styles.forgotPassword}>
               <Text style={styles.forgotPasswordText}>
-                Mot de passe oublié ?
+                Forgot password ?
               </Text>
             </TouchableOpacity>
 
@@ -129,23 +129,29 @@ export default function LoginScreen() {
               style={styles.loginButton}
               onPress={() => router.push("/explore")}
             >
-              <Text style={styles.loginButtonText}>Se connecter</Text>
+              <Text style={styles.loginButtonText}>Log in</Text>
             </TouchableOpacity>
             <View style={styles.divider}>
               <View style={styles.dividerLine} />
-              <Text style={styles.dividerText}>OU</Text>
+              <Text style={styles.dividerText}>OR</Text>
               <View style={styles.dividerLine} />
             </View>
             <View style={styles.signupContainer}>
               <Text style={styles.signupText}>
-                Vous n&apos;avez pas de compte ?{" "}
+                Don&apos;t have an account ?{" "}
               </Text>
+<<<<<<< HEAD
                     
                            <TouchableOpacity onPress={()=> router.push("/signup")}>
                 <Text style={styles.signupLink}>S&apos;inscrire</Text>
               </TouchableOpacity>     
             
       
+=======
+              <TouchableOpacity onPress={handleSignUp}>
+                <Text style={styles.signupLink}>Sign up</Text>
+              </TouchableOpacity>
+>>>>>>> 8109f70a39a86a2c7b964dd5fa3c03c9bd474dd1
             </View>
           </View>
         </ScrollView>
