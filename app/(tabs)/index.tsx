@@ -12,11 +12,11 @@ import {
   PlayfairDisplaySC_400Regular,
   useFonts
 } from "@expo-google-fonts/playfair-display-sc";
-
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View, } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+
 export default function HomeScreen() {
   let [fontsLoaded, fontError] = useFonts({
     PlayfairDisplay_400Regular,
@@ -30,101 +30,216 @@ export default function HomeScreen() {
     PlayfairDisplaySC_400Regular
   });
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const slides = [
+    {
+      image: require("@/assets/images/my.images/bk1.jpg"),
+      // title: "Welcome to",
+      // subtitle: "CaféLine"
+    },
+    {
+      image: require("@/assets/images/my.images/bk2.jpg"),
+      title: "Discover our",
+      subtitle: "Frappuccino"
+    },
+    {
+      image: require("@/assets/images/my.images/bk4.jpg"),
+      title: "Taste our",
+      subtitle: "Milkshakes"
+    },
+    {
+      image: require("@/assets/images/my.images/bk5.jpg"),
+      title: "Enjoy our",
+      subtitle: "Iced Coffee"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   if (!fontsLoaded) {
     return null; 
   }
 
   const router = useRouter();
-const blurhash =
-  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+  const blurhash = '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+
   return (
-   <ScrollView 
-      style={styles.scrollView}
-      contentContainerStyle={styles.scrollContent}
-      showsVerticalScrollIndicator={true}
-    >
-    <View style={styles.container}>
-        <Image
-        style={styles.image}
-        
-        source={require("@/assets/images/Image.webp")}
+    <View style={styles.mainContainer}>
+
+      <Image
+        key={currentIndex}
+        style={styles.backgroundImage}
+        source={slides[currentIndex].image}
         placeholder={{ blurhash }}
         contentFit="cover"
         transition={1000}
       />
-      <View style={styles.container2}>
-        <Text style={styles.text}>Welcome to</Text>
-        <Text style={styles.text2}>CaféLine </Text>
-      </View>
-   <View style={styles.container3}>
-     <Pressable onPress={()=> router.push("/login")} style={styles.pressable}>
-          <Text style={styles.text3}>Get Started</Text>
-      </Pressable>
-        <Pressable onPress={()=> router.push("/explore")} style={styles.pressable}>
-           <Text style={styles.text3}>Menu</Text>
-        </Pressable>
-   </View>
+      
+
+      <View style={styles.overlay} />
+
+      <ScrollView 
+      
+      
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.container}>
+          <View style={styles.logoContainer}>
+            <Image
+              style={styles.logo}
+              source={require("@/assets/images/my.images/logo.png")}
+              contentFit="cover"
+
+            />
+            <Text style={styles.welcomeText}>Welcome to </Text>
+            <Text style={styles.text2}> CafeLine </Text>
+          </View>
+          <View style={styles.container2}>
+            <Text style={styles.text}>{slides[currentIndex].title}</Text>
+            <Text style={styles.text2}>{slides[currentIndex].subtitle}</Text>
+          </View>
+          
+          <View style={styles.pagination}>
+            {slides.map((_, index) => (
+              <View
+                key={index}
+                style={[
+                  styles.paginationDot,
+                  currentIndex === index && styles.paginationDotActive
+                ]}
+              />
+            ))}
+          </View>
+
+          <View style={styles.container3}>
+            <Pressable onPress={() => router.push("/login")} style={styles.pressable}>
+              <Text style={styles.text3}>Get Started</Text>
+            </Pressable>
+            <Pressable onPress={() => router.push("/explore")} style={styles.pressable}>
+              <Text style={styles.text3}>Menu</Text>
+            </Pressable>
+          </View>
+        </View>
+      </ScrollView>
     </View>
-    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-    scrollView: {
+  mainContainer: {
     flex: 1,
-        backgroundColor:'#rgba(229, 193, 149, 0.26)',
-
   },
-   scrollContent: {
+  backgroundImage: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    paddingBottom: 40,
+  },
+  overlay: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)', 
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
     flexGrow: 1,
-    paddingBottom: 40, 
+    paddingBottom: 40,
   },
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingTop:100
+    justifyContent: 'center',
+    paddingTop: 100,
   },
-  pressable:{
-     backgroundColor:'#F3EBD7',
-     width:277,
-       justifyContent: 'center' , 
-        alignItems: 'center',
-  
-     height:73,
-     opacity:1,
-     margin:20,
-     borderRadius:20
+  pressable: {
+    backgroundColor: 'rgba(243, 235, 215, 0.9)', 
+    width: 277,
+    justifyContent: 'center', 
+    alignItems: 'center',
+    height: 73,
+    margin: 20,
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 5,
   },
   container2: {
-    marginTop:20,
-   
+    marginTop: 5,
     alignItems: 'center',
-      justifyContent: 'center' , 
+    justifyContent: 'center',
   },
-  container3:{
- alignItems: 'center',
-   opacity:1,
-   marginTop:50,
+  container3: {
+    alignItems: 'center',
+    marginTop: 10,
   },
-  image: {
-    width: 288,
-    height: 288,
-    borderRadius:80,
-    opacity:1
+  text: {
+    fontSize: 36,
+    fontFamily: 'PlayfairDisplaySC_400Regular',
+    textAlign: 'center',
+    color: '#F2E9D5', 
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 10,
   },
-  text:{
-    fontSize:36,
-     fontFamily: 'PlayfairDisplaySC_400Regular',
-    alignContent:'center',
-    color:'#A24444'
+  text2: {
+    fontSize: 64,
+    fontFamily: 'PlayfairDisplay_700Bold_Italic',
+    color: '#F2E9D5',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: -2, height: 2 },
+    textShadowRadius: 15,
   },
-  text2:{
-    fontSize:64,
-         fontFamily: 'PlayfairDisplay_700Bold_Italic',
+  text3: {
+    fontSize: 32,
+    fontFamily: 'PlayfairDisplay_600SemiBold',
+    color: '#4B3832',
   },
-  text3:{
-    fontSize:32,
-             fontFamily: 'PlayfairDisplay_600SemiBold',
-             opacity:1
-  }
+  pagination: {
+    flexDirection: 'row',
+    marginTop: 40,
+    gap: 8,
+  },
+  paginationDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#F2E9D5',
+    opacity: 0.4,
+  },
+  paginationDotActive: {
+    backgroundColor: '#F2E9D5',
+    opacity: 1,
+    width: 30,
+  },
+    logo: {
+    width: 200,
+    height: 200,
+    borderRadius: 50,
+    marginBottom: 5,
+  },
+    logoContainer: {
+    alignItems: "center",
+    paddingTop: 80,
+    paddingBottom: 10,
+  },
+   welcomeText: {
+    fontSize: 32,
+    fontFamily: "PlayfairDisplay_700Bold",
+    color: "#F2E9D5",
+    marginBottom: 5,
+  },
 });

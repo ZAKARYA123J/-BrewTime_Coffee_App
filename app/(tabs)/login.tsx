@@ -140,18 +140,12 @@ export default function LoginScreen() {
               <Text style={styles.signupText}>
                 Don&apos;t have an account ?{" "}
               </Text>
-<<<<<<< HEAD
                     
                            <TouchableOpacity onPress={()=> router.push("/signup")}>
-                <Text style={styles.signupLink}>S&apos;inscrire</Text>
+                <Text style={styles.signupLink}>Sign Up</Text>
               </TouchableOpacity>     
             
       
-=======
-              <TouchableOpacity onPress={handleSignUp}>
-                <Text style={styles.signupLink}>Sign up</Text>
-              </TouchableOpacity>
->>>>>>> 8109f70a39a86a2c7b964dd5fa3c03c9bd474dd1
             </View>
           </View>
         </ScrollView>
